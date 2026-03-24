@@ -5,15 +5,15 @@ class_name RepeaterNode
 var _current_count:int = 0
 
 
-func _tick()->NodeStatus:
+func _tick()->NodeStatus.status:
 	while repeat < 0 or _current_count < repeat:
-		var result:int = decorating_node._tick().get_node_status()
-		if result == 1:
+		var result:NodeStatus.status = decorating_node._tick()
+		if result == NodeStatus.status.FALIURE:
 			_current_count = 0
-			return NodeStatus.new(1)
-		elif result == 2:
-			return NodeStatus.new(2)
+			return NodeStatus.status.FALIURE
+		elif result == NodeStatus.status.RUNNING:
+			return NodeStatus.status.RUNNING
 		_current_count += 1
 	
 	_current_count = 0
-	return NodeStatus.new(0)
+	return NodeStatus.status.SUCCESS

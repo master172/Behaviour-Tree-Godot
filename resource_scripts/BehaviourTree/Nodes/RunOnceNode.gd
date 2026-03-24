@@ -2,14 +2,14 @@ extends DecoratorNode
 class_name RunOnceNode
 
 var _has_run: bool = false
-var _result: int = 3
+var _result: NodeStatus.status = NodeStatus.status.FALIURE
 
 ##the default tick implementation for decorators
-func _tick()->NodeStatus:
+func _tick()->NodeStatus.status:
 	if not _has_run:
-		var result:int = decorating_node._tick().get_node_status()
-		if result == 2:
-			return NodeStatus.new(2)
+		var result:NodeStatus.status = decorating_node._tick()
+		if result == NodeStatus.status.RUNNING:
+			return NodeStatus.status.RUNNING
 		_result = result
 		_has_run = true
-	return NodeStatus.new(_result)
+	return _result

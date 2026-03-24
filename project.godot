@@ -14,6 +14,10 @@ config/name="LearningBehaviourTrees"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+NodeStatus="*uid://bqfxwkn30o4ar"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2

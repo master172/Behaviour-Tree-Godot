@@ -11,11 +11,11 @@ func ready()->void:
 		third_child_present = true
 
 #replace with your implementation
-func _tick()->NodeStatus:
-	var result:NodeStatus = _child_nodes[0]._tick()
-	if result.get_node_status() == 0:
+func _tick()->NodeStatus.status:
+	var result:NodeStatus.status = _child_nodes[0]._tick()
+	if result == NodeStatus.status.SUCCESS:
 		return _child_nodes[1]._tick()
 	else:
 		if third_child_present:
 			return _child_nodes[2]._tick()
-		return NodeStatus.new(1)
+		return NodeStatus.status.FALIURE

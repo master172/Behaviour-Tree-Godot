@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b7ay3icfbn7dx" path="res://src/main.gd" id="1_5q4o7"]
 [ext_resource type="Script" uid="uid://8r8v1fbeaks3" path="res://resource_scripts/BehaviourTree/BehaviourTree.gd" id="2_3cfgd"]
 [ext_resource type="Script" uid="uid://csswbmx5ieni3" path="res://resource_scripts/BehaviourTree/Nodes/SelectorNode.gd" id="3_3cfgd"]
-[ext_resource type="Script" uid="uid://brfitullsymhc" path="res://resource_scripts/BehaviourTree/Nodes/Sequence.gd" id="3_fyndt"]
+[ext_resource type="Script" uid="uid://brfitullsymhc" path="res://resource_scripts/BehaviourTree/Nodes/SequenceNode.gd" id="3_fyndt"]
 
 [node name="Main" type="Node2D" unique_id=55049670]
 script = ExtResource("1_5q4o7")

@@ -12,18 +12,18 @@ func ready()->void:
 		third_child_present = true
 
 #replace with your implementation
-func _tick()->NodeStatus:
-	var condition:NodeStatus = _child_nodes[0]._tick()
-	if condition.get_node_status() == 0:
+func _tick()->NodeStatus.status:
+	var condition:NodeStatus.status = _child_nodes[0]._tick()
+	if condition == NodeStatus.status.SUCCESS:
 		ran_else = false
-		var result:NodeStatus = _child_nodes[1]._tick()
-		if result.get_node_status() == 1:
+		var result:NodeStatus.status = _child_nodes[1]._tick()
+		if result == NodeStatus.status.FALIURE:
 			ran_else = false
-			return NodeStatus.new(1)
-		return NodeStatus.new(2)
+			return NodeStatus.status.FALIURE
+		return NodeStatus.status.RUNNING
 	else:
 		if third_child_present and not ran_else:
 			ran_else = true
 			return _child_nodes[2]._tick()
 		ran_else = false
-		return NodeStatus.new(1)
+		return NodeStatus.status.FALIURE

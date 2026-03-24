@@ -5,15 +5,15 @@ class_name DelayNode
 
 var _start_time: int = -1
 
-func _tick() -> NodeStatus:
+func _tick() -> NodeStatus.status:
 	if _start_time == -1:
 		_start_time = Time.get_ticks_msec()
 	
 	var elapsed :float = (Time.get_ticks_msec() - _start_time) / 1000.0
 	if elapsed < delay_seconds:
-		return NodeStatus.new(2)
+		return NodeStatus.status.RUNNING
 	
-	var result :int = decorating_node._tick().get_node_status()
-	if result != 2:
+	var result :NodeStatus.status = decorating_node._tick()
+	if result != NodeStatus.status.RUNNING:
 		_start_time = -1
-	return NodeStatus.new(result)
+	return result

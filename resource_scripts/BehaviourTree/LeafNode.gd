@@ -5,5 +5,5 @@ class_name LeafNode
 @export var callable:String
 @export var black_board:BlackboardHost
 
-func _tick()->NodeStatus:
-	return NodeStatus.new(3)
+func _tick()->NodeStatus.status:
+	return NodeStatus.status.FALIURE

@@ -1,10 +1,8 @@
 extends DecoratorNode
 class_name InverterNode
 
-func _tick()->NodeStatus:
-	var result:int = decorating_node._tick().get_node_status()
-	if result == 2:
-		return NodeStatus.new(2)
-	elif result != 3:
-		return NodeStatus.new(0) if result == 1 else NodeStatus.new(1)
-	return NodeStatus.new(3)
+func _tick()->NodeStatus.status:
+	var result:NodeStatus.status = decorating_node._tick()
+	if result == NodeStatus.status.RUNNING:
+		return NodeStatus.status.RUNNING
+	return NodeStatus.status.SUCCESS if result == NodeStatus.status.FALIURE else NodeStatus.status.FALIURE

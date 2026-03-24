@@ -9,7 +9,7 @@ func ready()->void:
 		function = Callable(actor,callable)
 		function_set = true
 		
-func _tick()->NodeStatus:
+func _tick()->NodeStatus.status:
 	if function_set:
 		function.call()
-	return NodeStatus.new(0)
+	return NodeStatus.status.SUCCESS

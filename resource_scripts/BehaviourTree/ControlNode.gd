@@ -13,5 +13,5 @@ func ready()->void:
 func ending_function()->void:
 	current_node_number = 0
 	
-func _tick()->NodeStatus:
-	return NodeStatus.new(3)
+func _tick()->NodeStatus.status:
+	return NodeStatus.status.FALIURE

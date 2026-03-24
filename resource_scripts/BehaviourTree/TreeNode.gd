@@ -3,7 +3,7 @@ class_name TreeNode
 
 var _child_nodes:Array[TreeNode]
 
-@abstract func _tick()->NodeStatus
+@abstract func _tick()->NodeStatus.status
 
 func _ready() -> void:
 	_form_child_list_array()

@@ -1,5 +1,5 @@
 extends LeafNode
 
 #the default tick implementation
-func _tick()->NodeStatus:
-	return NodeStatus.new(1)
+func _tick()->NodeStatus.status:
+	return NodeStatus.status.FALIURE

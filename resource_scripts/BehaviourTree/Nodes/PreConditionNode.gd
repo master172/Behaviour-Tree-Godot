@@ -3,7 +3,7 @@ class_name PreCondition
 
 @export var function_holder:Node
 @export var function_name:String
-@export var deafult_option:int = 1
+@export var default_option:NodeStatus.status = NodeStatus.status.FALIURE
 
 var function:Callable
 var function_set:bool = false
@@ -15,8 +15,8 @@ func ready()->void:
 	if not function_set:
 		push_error("Function not set for pre-condition node")
 
-func _tick()->NodeStatus:
+func _tick()->NodeStatus.status:
 	var result:bool = function.call()
 	if result == true:
 		return decorating_node._tick()
-	return NodeStatus.new(deafult_option)
+	return default_option
