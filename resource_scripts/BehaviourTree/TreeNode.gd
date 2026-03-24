@@ -1,7 +1,7 @@
 @abstract extends Node
 class_name TreeNode
 
-var _child_nodes:Array[TreeNode]
+var _child_nodes:Array[TreeNode] = []
 
 @abstract func _tick()->NodeStatus.status
 

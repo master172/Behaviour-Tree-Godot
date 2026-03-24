@@ -9,9 +9,6 @@ func ready()->void:
 	child_nodes_length = _child_nodes.size()
 	current_node = _child_nodes[0]
 	current_node_number = 0
-
-func ending_function()->void:
-	current_node_number = 0
 	
 func _tick()->NodeStatus.status:
 	return NodeStatus.status.FALIURE
