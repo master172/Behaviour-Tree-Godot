@@ -2,9 +2,19 @@
 
 [ext_resource type="Script" uid="uid://b7ay3icfbn7dx" path="res://src/main.gd" id="1_5q4o7"]
 [ext_resource type="Script" uid="uid://8r8v1fbeaks3" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/BehaviourTree.gd" id="2_3cfgd"]
-[ext_resource type="Script" uid="uid://brfitullsymhc" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/Nodes/SequenceNode.gd" id="3_fyndt"]
-[ext_resource type="Script" uid="uid://do12ubeka1fqf" path="res://src/say_hello.gd" id="4_3cfgd"]
-[ext_resource type="Script" uid="uid://pep7im6u6u7a" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/Nodes/ForceFaliure.gd" id="5_fyndt"]
+[ext_resource type="Script" uid="uid://co1aqb7wd11r8" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/Nodes/WhileDoElse.gd" id="3_5mrjc"]
+[ext_resource type="Script" uid="uid://dc2fe5nlmgyl0" path="res://src/write.gd" id="4_rlaii"]
+[ext_resource type="Script" uid="uid://bnl2eifiyp8ub" path="res://src/read.gd" id="5_5mrjc"]
+[ext_resource type="Script" uid="uid://c3pe6ywmg7hv2" path="res://src/check.gd" id="5_kf8lf"]
+[ext_resource type="Script" uid="uid://mfnex2jbuik4" path="res://addons/behaviour_tree/resource_scripts/Blackboard/BlackboardHost.gd" id="6_kf8lf"]
+[ext_resource type="Script" uid="uid://b6cu1rth3mcmy" path="res://addons/behaviour_tree/resource_scripts/Blackboard/Blackboard.gd" id="7_mgm53"]
+
+[sub_resource type="Resource" id="Resource_uewes"]
+script = ExtResource("7_mgm53")
+_data = Dictionary[String, Variant]({
+"state": 2
+})
+metadata/_custom_type_script = "uid://b6cu1rth3mcmy"
 
 [node name="Main" type="Node2D" unique_id=55049670]
 script = ExtResource("1_5q4o7")
@@ -13,25 +23,23 @@ script = ExtResource("1_5q4o7")
 script = ExtResource("2_3cfgd")
 metadata/_custom_type_script = "uid://8r8v1fbeaks3"
 
-[node name="SequenceNode" type="Node" parent="BehaviourTree" unique_id=1668295539]
-script = ExtResource("3_fyndt")
-metadata/_custom_type_script = "uid://brfitullsymhc"
+[node name="SequenceNode" type="Node" parent="BehaviourTree" unique_id=525005915]
+script = ExtResource("3_5mrjc")
+metadata/_custom_type_script = "uid://co1aqb7wd11r8"
 
-[node name="Bye" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1135115436 node_paths=PackedStringArray("actor")]
-script = ExtResource("4_3cfgd")
-actor = NodePath("../../..")
-callable = "say_bye"
+[node name="Check" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1093970194 node_paths=PackedStringArray("black_board")]
+script = ExtResource("5_kf8lf")
+black_board = NodePath("../../../BlackboardHost")
 
-[node name="Greet" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1844562446 node_paths=PackedStringArray("actor")]
-script = ExtResource("4_3cfgd")
-actor = NodePath("../../..")
-callable = "say_greeting"
+[node name="Write" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1931088929 node_paths=PackedStringArray("black_board")]
+script = ExtResource("4_rlaii")
+black_board = NodePath("../../../BlackboardHost")
 
-[node name="ForceFaliureNode" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1971030658]
-script = ExtResource("5_fyndt")
-metadata/_custom_type_script = "uid://pep7im6u6u7a"
+[node name="Read" type="Node" parent="BehaviourTree/SequenceNode" unique_id=41363541 node_paths=PackedStringArray("black_board")]
+script = ExtResource("5_5mrjc")
+black_board = NodePath("../../../BlackboardHost")
 
-[node name="SayHello" type="Node" parent="BehaviourTree/SequenceNode/ForceFaliureNode" unique_id=733823919 node_paths=PackedStringArray("actor")]
-script = ExtResource("4_3cfgd")
-actor = NodePath("../../../..")
-callable = "say_hello"
+[node name="BlackboardHost" type="Node" parent="." unique_id=1508553389]
+script = ExtResource("6_kf8lf")
+black_board = SubResource("Resource_uewes")
+metadata/_custom_type_script = "uid://mfnex2jbuik4"

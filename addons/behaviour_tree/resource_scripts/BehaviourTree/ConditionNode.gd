@@ -1,7 +1,7 @@
 @abstract extends LeafNode
 class_name ConditionNode
 
-@abstract func evaluate()->bool
+@abstract func _evaluate()->bool
 
 func _ready() -> void:
 	super._ready()
@@ -10,4 +10,4 @@ func _ready() -> void:
 
 ##the default tick implementation for leaf nodes
 func _tick()->NodeStatus.status:
-	return NodeStatus.status.SUCCESS if evaluate() else NodeStatus.status.FALIURE
+	return NodeStatus.status.SUCCESS if _evaluate() else NodeStatus.status.FALIURE

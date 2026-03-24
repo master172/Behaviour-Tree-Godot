@@ -9,3 +9,6 @@ func say_greeting()->void:
 
 func say_bye()->void:
 	print("bye")
+
+func default_function()->bool:
+	return true if randi() % 2 == 0 else false

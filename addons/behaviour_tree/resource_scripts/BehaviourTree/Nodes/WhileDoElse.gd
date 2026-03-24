@@ -1,5 +1,5 @@
 extends ControlNode
-class_name WhileDoElse
+class_name WhileDoElseNode
 
 var third_child_present:bool = false
 var ran_else:bool = false
@@ -15,11 +15,12 @@ func _ready()->void:
 #replace with your implementation
 func _tick()->NodeStatus.status:
 	var condition:NodeStatus.status = _child_nodes[0]._tick()
-	if condition == NodeStatus.status.SUCCESS:
+	if condition == NodeStatus.status.RUNNING:
+		return NodeStatus.status.RUNNING
+	elif condition == NodeStatus.status.SUCCESS:
 		ran_else = false
 		var result:NodeStatus.status = _child_nodes[1]._tick()
 		if result == NodeStatus.status.FALIURE:
-			ran_else = false
 			return NodeStatus.status.FALIURE
 		return NodeStatus.status.RUNNING
 	else:

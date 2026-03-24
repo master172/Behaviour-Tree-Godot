@@ -1,6 +1,6 @@
 extends ControlNode
 class_name SelectorNode
-
+	
 func _tick()->NodeStatus.status:
 	if current_node_number >= child_nodes_length:
 		current_node_number = 0
