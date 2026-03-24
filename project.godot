@@ -23,10 +23,16 @@ NodeStatus="*uid://bqfxwkn30o4ar"
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/behaviour_tree/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
-"res://resource_scripts/": "teal",
+"res://addons/": "red",
+"res://addons/behaviour_tree/autoload/": "red",
+"res://addons/behaviour_tree/resource_scripts/": "teal",
 "res://script_templates/": "gray",
 "res://src/": "green"
 }
