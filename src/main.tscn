@@ -2,17 +2,36 @@
 
 [ext_resource type="Script" uid="uid://b7ay3icfbn7dx" path="res://src/main.gd" id="1_5q4o7"]
 [ext_resource type="Script" uid="uid://8r8v1fbeaks3" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/BehaviourTree.gd" id="2_3cfgd"]
-[ext_resource type="Script" uid="uid://csswbmx5ieni3" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/Nodes/SelectorNode.gd" id="3_3cfgd"]
 [ext_resource type="Script" uid="uid://brfitullsymhc" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/Nodes/SequenceNode.gd" id="3_fyndt"]
+[ext_resource type="Script" uid="uid://do12ubeka1fqf" path="res://src/say_hello.gd" id="4_3cfgd"]
+[ext_resource type="Script" uid="uid://pep7im6u6u7a" path="res://addons/behaviour_tree/resource_scripts/BehaviourTree/Nodes/ForceFaliure.gd" id="5_fyndt"]
 
 [node name="Main" type="Node2D" unique_id=55049670]
 script = ExtResource("1_5q4o7")
 
-[node name="BehaviourTree" type="Node" parent="." unique_id=1334958080]
+[node name="BehaviourTree" type="Node" parent="." unique_id=97191977]
 script = ExtResource("2_3cfgd")
+metadata/_custom_type_script = "uid://8r8v1fbeaks3"
 
-[node name="DefaultBehaviour" type="Node" parent="BehaviourTree" unique_id=1600749459]
+[node name="SequenceNode" type="Node" parent="BehaviourTree" unique_id=1668295539]
 script = ExtResource("3_fyndt")
+metadata/_custom_type_script = "uid://brfitullsymhc"
 
-[node name="SelectorNode" type="Node" parent="BehaviourTree/DefaultBehaviour" unique_id=239580879]
-script = ExtResource("3_3cfgd")
+[node name="Bye" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1135115436 node_paths=PackedStringArray("actor")]
+script = ExtResource("4_3cfgd")
+actor = NodePath("../../..")
+callable = "say_bye"
+
+[node name="Greet" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1844562446 node_paths=PackedStringArray("actor")]
+script = ExtResource("4_3cfgd")
+actor = NodePath("../../..")
+callable = "say_greeting"
+
+[node name="ForceFaliureNode" type="Node" parent="BehaviourTree/SequenceNode" unique_id=1971030658]
+script = ExtResource("5_fyndt")
+metadata/_custom_type_script = "uid://pep7im6u6u7a"
+
+[node name="SayHello" type="Node" parent="BehaviourTree/SequenceNode/ForceFaliureNode" unique_id=733823919 node_paths=PackedStringArray("actor")]
+script = ExtResource("4_3cfgd")
+actor = NodePath("../../../..")
+callable = "say_hello"

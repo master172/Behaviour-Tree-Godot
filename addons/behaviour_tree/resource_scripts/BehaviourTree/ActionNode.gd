@@ -9,3 +9,5 @@ func _ready()->void:
 	if actor.has_method(callable):
 		function = Callable(actor,callable)
 		function_set = true
+	else:
+		push_error("no function found in actor: "+actor.name + " named: "+callable)
