@@ -8,7 +8,8 @@ class_name PreCondition
 var function:Callable
 var function_set:bool = false
 
-func ready()->void:
+func _ready()->void:
+	super._ready()
 	if function_holder.has_method(function_name):
 		function = Callable(function_holder,function_name)
 		function_set = true

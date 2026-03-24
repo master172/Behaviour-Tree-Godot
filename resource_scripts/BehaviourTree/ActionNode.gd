@@ -4,12 +4,8 @@ class_name ActionNode
 var function:Callable
 var function_set:bool = false
 
-func ready()->void:
+func _ready()->void:
+	super._ready()
 	if actor.has_method(callable):
 		function = Callable(actor,callable)
 		function_set = true
-		
-func _tick()->NodeStatus.status:
-	if function_set:
-		function.call()
-	return NodeStatus.status.SUCCESS

@@ -7,7 +7,8 @@ class_name ParallelNode
 var current_success_count:int = 0
 var current_faliure_count:int = 0
 
-func ready()->void:
+func _ready()->void:
+	super._ready()
 	if success_count == -1:
 		success_count = child_nodes_length
 	if faliure_count == -1:

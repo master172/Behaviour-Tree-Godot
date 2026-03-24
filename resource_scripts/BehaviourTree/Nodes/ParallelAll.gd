@@ -6,7 +6,8 @@ class_name ParallelAllNode
 
 
 
-func ready()->void:
+func _ready()->void:
+	super._ready()
 	if success_count == -1:
 		success_count = child_nodes_length
 	if faliure_count == -1:

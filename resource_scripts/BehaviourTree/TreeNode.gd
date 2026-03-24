@@ -7,10 +7,7 @@ var _child_nodes:Array[TreeNode] = []
 
 func _ready() -> void:
 	_form_child_list_array()
-	ready()
-	
-func ready()->void:
-	pass
+
 
 func _form_child_list_array()->void:
 	for i:Node in get_children():

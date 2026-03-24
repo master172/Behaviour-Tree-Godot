@@ -3,7 +3,8 @@ class_name IfThenElseNode
 
 var third_child_present:bool = false
 
-func ready()->void:
+func _ready()->void:
+	super._ready()
 	var child_list_size:int = _child_nodes.size()
 	if child_list_size < 2:
 		push_error("If then Else must be provided with a minimum of two child nodes")

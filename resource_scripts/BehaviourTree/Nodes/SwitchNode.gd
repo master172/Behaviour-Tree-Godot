@@ -5,7 +5,8 @@ class_name SwitchNode
 @export var property:String = ""
 @export var cases:Array[Variant] = []
 
-func ready()->void:
+func _ready()->void:
+	super._ready()
 	if black_board == null:
 		push_error("black board not configured for switch node")
 	if property == "":
